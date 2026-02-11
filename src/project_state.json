@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Mobile-first premium 'THAI LOTTERY' VIP gambling/lottery web platform (app-like SPA) with strict dark blue/black + gold theme, working navigation, game play betting flow, results history, ticket booking, deposit/withdraw, and user profile.",
+  "architectural_notes": [
+    "Single-page app-style page switching; all buttons must open the correct page and provide success feedback on submit.",
+    "Mobile-first responsive layout with fixed bottom navigation (Home/Deposit/Withdraw) and touch-friendly controls.",
+    "Strict visual theme: dark blue/black background, gold/yellow primary buttons, red blinking LIVE indicator, smooth fade/slide/slow transitions only.",
+    "Home page must follow exact section order and content as specified; no extra sections/pages/features and no theme/layout changes."
+  ],
+  "known_issues": [
+    "Previous build attempt failed ('AI was unable to implement your request'); implementation needs retry while adhering strictly to provided spec."
+  ],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Premium gold/lottery/VIP hero banner image with dark background (thai-lottery-hero.dim_1200x700.png)\n- Wide dark premium banner background for the animated info section (info-banner-bg.dim_1200x260.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-the-home-page-with-the-exact-section-order-and-content-specified-1-header-with-centered-logo-text-thai-lottery-left-menu-back-icon-right-refresh-icon-mobile-icon-hero-area-below-header-with-a-large-gold-lottery-vip-hero-image-and-overlay-text-thai-lottery-official-live-result-that-fades-in-after-the-image-load-event-2-animated-info-banner-with-a-wide-banner-image-and-animated-text-appearing-line-by-line-in-this-exact-order-official-thai-lottery-platform-fast-secure-result-system-trusted-vip-gaming-experience-3-quick-result-card-for-bangkok-weekly-result-with-red-blinking-live-indicator-winning-number-3-0-8-gold-play-now-button-4-main-thai-lottery-result-card-for-thailand-lottery-with-red-blinking-live-indicator-winning-number-6-2-9-gold-play-now-button-5-game-rate-table-with-gold-header-dark-rows-no-animation-and-the-exact-rows-provided-6-live-winning-history-section-titled-vip-winners-with-20-25-entries-masked-name-masked-phone-number-winning-amount-40-000-sar-auto-vertical-scroll-and-a-highlighted-active-entry-7-quick-play-buttons-section-with-the-exact-5-buttons-and-behaviors-specified-8-old-result-button-vip-pro-style-text-old-result-result-history-opens-the-result-page-date-wise",
+      "title": "Create the Home page with the exact section order and content specified: (1) Header with centered logo text \"THAI LOTTERY\", left Menu/Back icon, right Refresh icon + Mobile icon; hero area below header with a large gold/lottery/VIP hero image and overlay text \"THAI LOTTERY – OFFICIAL LIVE RESULT\" that fades in after the image load event. (2) Animated info banner with a wide banner image and animated text appearing line-by-line in this exact order: \"Official Thai Lottery Platform\", \"Fast & Secure Result System\", \"Trusted VIP Gaming Experience\". (3) Quick Result card for \"BANGKOK WEEKLY RESULT\" with red blinking LIVE indicator, winning number \"3 0 8\", gold \"PLAY NOW\" button. (4) Main Thai Lottery Result card for \"THAILAND LOTTERY\" with red blinking LIVE indicator, winning number \"6 2 9\", gold \"PLAY NOW\" button. (5) Game rate table with gold header, dark rows, no animation, and the exact rows provided. (6) Live winning history section titled \"VIP WINNERS\" with 20–25 entries (masked name, masked phone number, winning amount 40,000+ SAR), auto vertical scroll, and a highlighted active entry. (7) Quick play buttons section with the exact 5 buttons and behaviors specified. (8) Old result button: VIP Pro style, text \"OLD RESULT / RESULT HISTORY\", opens the Result page date-wise.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-fixed-mobile-first-app-like-layout-with-a-dark-blue-black-background-and-gold-yellow-primary-buttons-touch-friendly-sizing-smooth-animations-fade-slide-slow-transitions-only-and-a-fixed-bottom-navigation-that-stays-visible-and-accessible-across-all-pages-with-exactly-these-items-home-deposit-withdraw",
+      "title": "Implement a fixed, mobile-first, app-like layout with a dark blue/black background and gold/yellow primary buttons, touch-friendly sizing, smooth animations (fade/slide/slow transitions only), and a fixed bottom navigation that stays visible and accessible across all pages with exactly these items: Home, Deposit, Withdraw.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-the-game-play-page-exactly-per-specification-top-bar-shows-the-selected-game-name-and-a-user-balance-display-a-dropdown-labeled-select-play-type-multiple-bet-rows-with-fields-for-bet-number-and-amount-a-bottom-summary-showing-bet-total-discount-and-final-amount-and-a-gold-submit-button-support-navigation-into-this-page-from-a-home-section-3-play-now-for-bangkok-weekly-b-home-section-4-play-now-for-thailand-lottery-c-quick-play-button-bangkok-weekly-play-and-d-quick-play-button-thai-lottery-play-on-submit-show-a-premium-notification-bet-successful",
+      "title": "Create the Game Play page exactly per specification: top bar shows the selected game name and a user balance display; a dropdown labeled \"SELECT PLAY TYPE\"; multiple bet rows with fields for bet number and amount; a bottom summary showing bet total, discount, and final amount; and a gold \"SUBMIT\" button. Support navigation into this page from: (a) Home Section 3 \"PLAY NOW\" for Bangkok Weekly, (b) Home Section 4 \"PLAY NOW\" for Thailand Lottery, (c) Quick Play button \"BANGKOK WEEKLY PLAY\", and (d) Quick Play button \"THAI LOTTERY PLAY\". On submit, show a premium notification \"Bet Successful\".",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-the-results-page-result-page-with-a-scrollable-date-wise-result-list-each-row-must-show-game-name-date-time-and-winning-number-the-page-must-support-opening-with-pre-filtered-datasets-based-on-which-home-button-was-used-a-thai-results-history-shows-exactly-the-5-thai-history-entries-provided-b-bangkok-results-history-shows-exactly-the-6-bangkok-history-entries-provided-and-c-the-old-result-result-history-button-opens-the-same-result-page-showing-date-time-wise-entries",
+      "title": "Create the Results page (Result Page) with a scrollable, date-wise result list. Each row must show: game name, date, time, and winning number. The page must support opening with pre-filtered datasets based on which Home button was used: (a) \"THAI RESULTS HISTORY\" shows exactly the 5 Thai history entries provided; (b) \"BANGKOK RESULTS HISTORY\" shows exactly the 6 Bangkok history entries provided; and (c) the \"OLD RESULT / RESULT HISTORY\" button opens the same Result page showing date/time-wise entries.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-the-ticket-booking-page-with-a-form-containing-exactly-these-inputs-user-name-contact-number-game-type-vip-rumble-local-ticket-selection-booking-date-submitting-the-form-must-show-confirmation-plus-a-processing-message-per-spec-confirmation-processing-message-the-ticket-booking-page-must-open-from-the-home-quick-play-button-ticket-booking",
+      "title": "Create the Ticket Booking page with a form containing exactly these inputs: User name, Contact number, Game type, VIP / Rumble / Local ticket (selection), Booking date. Submitting the form must show confirmation plus a \"Processing\" message (per spec: \"Confirmation + Processing message\"). The Ticket Booking page must open from the Home quick play button \"TICKET BOOKING\".",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-deposit-and-withdraw-pages-accessible-only-via-the-fixed-bottom-navigation-each-page-must-be-mobile-first-premium-and-include-at-least-one-functional-form-submission-that-shows-success-feedback-so-the-pages-are-not-dead-ends-do-not-add-additional-pages-or-extra-feature-flows-beyond-what-is-needed-for-a-working-submit-success-feedback-on-each-page",
+      "title": "Create Deposit and Withdraw pages accessible only via the fixed bottom navigation. Each page must be mobile-first, premium, and include at least one functional form submission that shows success feedback (so the pages are not dead ends). Do not add additional pages or extra feature flows beyond what is needed for a working submit + success feedback on each page.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-every-button-and-navigation-action-described-in-the-spec-is-wired-to-an-actual-route-page-and-produces-the-required-behavior-page-opens-form-submits-success-feedback-prevent-dead-links-by-adding-route-level-404-guard-handling-that-redirects-to-home-without-adding-new-pages",
+      "title": "Ensure every button and navigation action described in the spec is wired to an actual route/page and produces the required behavior (page opens, form submits, success feedback). Prevent dead links by adding route-level 404/guard handling that redirects to Home (without adding new pages).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build premium mobile-app-like THAI LOTTERY VIP website UI/UX matching provided strict spec (no reordering, no extra pages/features, no theme changes).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement functional multi-page navigation (Home, Game Play, Result/History, Deposit, Withdraw, User Profile, Ticket Booking) with fixed bottom nav (Home/Deposit/Withdraw) and all buttons opening correct pages.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Game Play page: bet form (number/type/SAR amount, multiple rows), totals summary (total/discount/final), submit shows 'Bet Successful' premium notification.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Results page: date-wise scrollable result list with required Thai Results History and Bangkok Results History datasets; each row includes game name/date/time/winning number.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Home page sections per spec: header + hero with fade-in text after image load, animated info banner (3 lines), quick result cards (Bangkok Weekly 308, Thailand Lottery 629), game rate table, VIP winners auto-scroll list with active highlight, quick play buttons, old result button.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Ticket Booking page: inputs (user name, contact number, game type, VIP/Rumble/Local ticket, booking date) and submit shows confirmation + processing feedback.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Deposit and Withdraw pages accessible from fixed bottom nav; buttons functional and pages open correctly (UI + submission/feedback behaviors as defined/needed).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "User Profile page included and accessible; maintain premium mobile-first UI consistency.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "THAI LOTTERY - VIP Platform",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

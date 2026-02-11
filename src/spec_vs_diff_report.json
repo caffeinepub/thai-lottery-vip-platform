@@ -1,0 +1,119 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-11T08:28:26.530Z",
+  "summary": "Diff adds backend canister methods for bets/bookings/results plus a TanStack Router app with pages (Home, Game Play, Results, Ticket Booking, Deposit, Withdraw) and a fixed bottom nav. Several spec details appear incomplete or mismatched (notably results datasets, Home sections 6–8 details, and Ticket Booking required inputs). Also includes some unrequested UI behaviors/assets (e.g., external flag image, deposit/withdraw presets, auto-redirect after submit).",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Home page must include all 8 sections in the exact order with exact specified content/behaviors (including VIP WINNERS with highlighted active entry, exact 5 Quick Play buttons + behaviors, and an \"OLD RESULT / RESULT HISTORY\" button).",
+      "reason": "HomePage.tsx is truncated before showing sections 6–8; VIP ticker implementation does not show an active/highlighted entry behavior, and Quick Play buttons + Old Result button are not evidenced in the provided diff excerpt.",
+      "evidence": [
+        "frontend/src/pages/HomePage.tsx (truncated)",
+        "frontend/src/components/home/VipWinnersTicker.tsx"
+      ]
+    },
+    {
+      "id": "REQ-1",
+      "requirement": "VIP WINNERS list must auto-scroll vertically and visibly highlight the active entry.",
+      "reason": "Auto-scroll exists via `animate-scroll-winners`, but no concept of an \"active\" entry or highlight styling is shown (all rows share same styling; only hover effect present).",
+      "evidence": [
+        "frontend/src/components/home/VipWinnersTicker.tsx",
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Game Play page dropdown must be labeled exactly \"SELECT PLAY TYPE\".",
+      "reason": "Label text is rendered as \"Select Play Type\" (different casing) in the shown code.",
+      "evidence": [
+        "frontend/src/pages/GamePlayPage.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Results page must show exactly the 5 Thai history entries and exactly the 6 Bangkok history entries provided in the spec (no rewording/mismatched numbers).",
+      "reason": "Backend hardcodes Thai/Bangkok datasets with dates/times/winning numbers that are unlikely to match the spec-provided exact entries; also uses gameName strings like \"Thailand Lottery\"/\"Bangkok Weekly\" and 6-digit winning numbers not evidenced to match the required exact strings.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "requirement": "Ticket Booking page form must contain exactly these inputs: User name, Contact number, Game type, VIP/Rumble/Local ticket selection, Booking date.",
+      "reason": "Implementation shows inputs for userName, contactNumber, ticketType (VIP/Rumble/Local), bookingDate, but no input for Game type; it also hardcodes `gameType` to `thailandLottery` on submit.",
+      "evidence": [
+        "frontend/src/pages/TicketBookingPage.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "requirement": "Deposit and Withdraw pages must be accessible only via the fixed bottom navigation.",
+      "reason": "Routes `/deposit` and `/withdraw` are publicly defined; no route guard logic is shown restricting access to only bottom-nav entry.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "VIP WINNERS entries include an external Saudi flag image loaded from flagcdn.com.",
+      "reason": "Spec requires masked winner entries and scrolling/highlight behavior, but does not request country flags or external image dependencies.",
+      "evidence": [
+        "frontend/src/components/home/VipWinnersTicker.tsx"
+      ]
+    },
+    {
+      "description": "Deposit page includes preset amount shortcut buttons (100–10000).",
+      "reason": "REQ-6 only asks for a functional form submission with success feedback; preset quick-pick amounts are additional functionality not explicitly described.",
+      "evidence": [
+        "frontend/src/pages/DepositPage.tsx"
+      ]
+    },
+    {
+      "description": "Withdraw page includes preset amount shortcut buttons and a \"Max\" button.",
+      "reason": "REQ-6 only asks for a functional form submission with success feedback; presets/Max behavior are additional functionality not explicitly described.",
+      "evidence": [
+        "frontend/src/pages/WithdrawPage.tsx"
+      ]
+    },
+    {
+      "description": "After successful submit, Deposit/Withdraw/Bet/Booking flows auto-navigate back to Home after a delay.",
+      "reason": "Spec requires success feedback but does not specify forced redirection after submit; this is extra behavior.",
+      "evidence": [
+        "frontend/src/pages/DepositPage.tsx",
+        "frontend/src/pages/WithdrawPage.tsx",
+        "frontend/src/pages/GamePlayPage.tsx (truncated)",
+        "frontend/src/pages/TicketBookingPage.tsx (truncated)"
+      ]
+    }
+  ],
+  "confidence": 0.68,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/home/InfoBanner.tsx",
+    "frontend/src/components/home/LiveResultCard.tsx",
+    "frontend/src/components/home/VipWinnersTicker.tsx",
+    "frontend/src/components/layout/AppLayout.tsx",
+    "frontend/src/components/layout/BottomNav.tsx",
+    "frontend/src/components/results/ResultRow.tsx",
+    "frontend/src/constants/homeContent.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/DepositPage.tsx",
+    "frontend/src/pages/GamePlayPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/ResultsPage.tsx",
+    "frontend/src/pages/TicketBookingPage.tsx",
+    "frontend/src/pages/WithdrawPage.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

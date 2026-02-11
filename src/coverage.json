@@ -1,0 +1,262 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-11T08:28:26.533Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 7,
+    "implemented": 7,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Create the Home page with the exact section order and content specified: (1) Header with centered logo text \"THAI LOTTERY\", left Menu/Back icon, right Refresh icon + Mobile icon; hero area below header with a large gold/lottery/VIP hero image and overlay text \"THAI LOTTERY – OFFICIAL LIVE RESULT\" that fades in after the image load event. (2) Animated info banner with a wide banner image and animated text appearing line-by-line in this exact order: \"Official Thai Lottery Platform\", \"Fast & Secure Result System\", \"Trusted VIP Gaming Experience\". (3) Quick Result card for \"BANGKOK WEEKLY RESULT\" with red blinking LIVE indicator, winning number \"3 0 8\", gold \"PLAY NOW\" button. (4) Main Thai Lottery Result card for \"THAILAND LOTTERY\" with red blinking LIVE indicator, winning number \"6 2 9\", gold \"PLAY NOW\" button. (5) Game rate table with gold header, dark rows, no animation, and the exact rows provided. (6) Live winning history section titled \"VIP WINNERS\" with 20–25 entries (masked name, masked phone number, winning amount 40,000+ SAR), auto vertical scroll, and a highlighted active entry. (7) Quick play buttons section with the exact 5 buttons and behaviors specified. (8) Old result button: VIP Pro style, text \"OLD RESULT / RESULT HISTORY\", opens the Result page date-wise.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/thai-lottery-hero.dim_1200x700.png",
+          "frontend/public/assets/generated/info-banner-bg.dim_1200x260.png",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/home/VipWinnersTicker.tsx",
+          "frontend/src/components/home/InfoBanner.tsx",
+          "frontend/src/components/home/LiveResultCard.tsx",
+          "frontend/src/constants/homeContent.ts"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/thai-lottery-hero.dim_1200x700.png",
+          "frontend/public/assets/generated/info-banner-bg.dim_1200x260.png",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/home/VipWinnersTicker.tsx",
+          "frontend/src/components/home/InfoBanner.tsx",
+          "frontend/src/components/home/LiveResultCard.tsx",
+          "frontend/src/constants/homeContent.ts"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Implement a fixed, mobile-first, app-like layout with a dark blue/black background and gold/yellow primary buttons, touch-friendly sizing, smooth animations (fade/slide/slow transitions only), and a fixed bottom navigation that stays visible and accessible across all pages with exactly these items: Home, Deposit, Withdraw.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/layout/AppLayout.tsx",
+          "frontend/src/components/layout/BottomNav.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/layout/AppLayout.tsx",
+          "frontend/src/components/layout/BottomNav.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Create the Game Play page exactly per specification: top bar shows the selected game name and a user balance display; a dropdown labeled \"SELECT PLAY TYPE\"; multiple bet rows with fields for bet number and amount; a bottom summary showing bet total, discount, and final amount; and a gold \"SUBMIT\" button. Support navigation into this page from: (a) Home Section 3 \"PLAY NOW\" for Bangkok Weekly, (b) Home Section 4 \"PLAY NOW\" for Thailand Lottery, (c) Quick Play button \"BANGKOK WEEKLY PLAY\", and (d) Quick Play button \"THAI LOTTERY PLAY\". On submit, show a premium notification \"Bet Successful\".",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/GamePlayPage.tsx",
+          "frontend/src/components/gameplay/BetRowsEditor.tsx",
+          "frontend/src/services/backendClient.ts",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/feedback/ToastProvider.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/GamePlayPage.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Create the Results page (Result Page) with a scrollable, date-wise result list. Each row must show: game name, date, time, and winning number. The page must support opening with pre-filtered datasets based on which Home button was used: (a) \"THAI RESULTS HISTORY\" shows exactly the 5 Thai history entries provided; (b) \"BANGKOK RESULTS HISTORY\" shows exactly the 6 Bangkok history entries provided; and (c) the \"OLD RESULT / RESULT HISTORY\" button opens the same Result page showing date/time-wise entries.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/ResultsPage.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/results/ResultRow.tsx",
+          "frontend/src/services/backendClient.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/ResultsPage.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/results/ResultRow.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Create the Ticket Booking page with a form containing exactly these inputs: User name, Contact number, Game type, VIP / Rumble / Local ticket (selection), Booking date. Submitting the form must show confirmation plus a \"Processing\" message (per spec: \"Confirmation + Processing message\"). The Ticket Booking page must open from the Home quick play button \"TICKET BOOKING\".",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/TicketBookingPage.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/services/backendClient.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/TicketBookingPage.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Create Deposit and Withdraw pages accessible only via the fixed bottom navigation. Each page must be mobile-first, premium, and include at least one functional form submission that shows success feedback (so the pages are not dead ends). Do not add additional pages or extra feature flows beyond what is needed for a working submit + success feedback on each page.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/DepositPage.tsx",
+          "frontend/src/pages/WithdrawPage.tsx",
+          "frontend/src/components/layout/BottomNav.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/DepositPage.tsx",
+          "frontend/src/pages/WithdrawPage.tsx",
+          "frontend/src/components/layout/BottomNav.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Ensure every button and navigation action described in the spec is wired to an actual route/page and produces the required behavior (page opens, form submits, success feedback). Prevent dead links by adding route-level 404/guard handling that redirects to Home (without adding new pages).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/GamePlayPage.tsx",
+          "frontend/src/pages/ResultsPage.tsx",
+          "frontend/src/pages/TicketBookingPage.tsx",
+          "frontend/src/pages/DepositPage.tsx",
+          "frontend/src/pages/WithdrawPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/GamePlayPage.tsx",
+          "frontend/src/pages/ResultsPage.tsx",
+          "frontend/src/pages/TicketBookingPage.tsx",
+          "frontend/src/pages/DepositPage.tsx",
+          "frontend/src/pages/WithdrawPage.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "build-template/Dockerfile",
+    "build-template/LICENSE",
+    "build-template/README.md",
+    "build-template/deploy.sh",
+    "build-template/icp.yaml",
+    "build-template/package.json",
+    "build-template/pnpm-lock.yaml",
+    "build-template/pnpm-workspace.yaml",
+    "build-template/scripts/prune-unused-images.js",
+    "build-template/scripts/resize-images.js",
+    "build-template/src/backend/canister.yaml",
+    "build-template/src/backend/system-idl/aaaaa-aa.did",
+    "build-template/src/frontend/canister.yaml",
+    "build-template/src/frontend/components.json",
+    "build-template/src/frontend/env.json",
+    "build-template/src/frontend/eslint-rules/no-bigint-in-query-keys.js",
+    "build-template/src/frontend/eslint-rules/require-internet-identity-provider.js",
+    "build-template/src/frontend/eslint.config.js",
+    "build-template/src/frontend/package.json",
+    "build-template/src/frontend/postcss.config.js",
+    "build-template/src/frontend/src/components/ui/accordion.tsx",
+    "build-template/src/frontend/src/components/ui/alert-dialog.tsx",
+    "build-template/src/frontend/src/components/ui/alert.tsx",
+    "build-template/src/frontend/src/components/ui/aspect-ratio.tsx",
+    "build-template/src/frontend/src/components/ui/avatar.tsx",
+    "build-template/src/frontend/src/components/ui/badge.tsx",
+    "build-template/src/frontend/src/components/ui/breadcrumb.tsx",
+    "build-template/src/frontend/src/components/ui/button.tsx",
+    "build-template/src/frontend/src/components/ui/calendar.tsx",
+    "build-template/src/frontend/src/components/ui/card.tsx",
+    "build-template/src/frontend/src/components/ui/carousel.tsx",
+    "build-template/src/frontend/src/components/ui/chart.tsx",
+    "build-template/src/frontend/src/components/ui/checkbox.tsx",
+    "build-template/src/frontend/src/components/ui/collapsible.tsx",
+    "build-template/src/frontend/src/components/ui/command.tsx",
+    "build-template/src/frontend/src/components/ui/context-menu.tsx",
+    "build-template/src/frontend/src/components/ui/dialog.tsx",
+    "build-template/src/frontend/src/components/ui/drawer.tsx",
+    "build-template/src/frontend/src/components/ui/dropdown-menu.tsx",
+    "build-template/src/frontend/src/components/ui/form.tsx",
+    "build-template/src/frontend/src/components/ui/hover-card.tsx",
+    "build-template/src/frontend/src/components/ui/input-otp.tsx",
+    "build-template/src/frontend/src/components/ui/input.tsx",
+    "build-template/src/frontend/src/components/ui/label.tsx",
+    "build-template/src/frontend/src/components/ui/menubar.tsx",
+    "build-template/src/frontend/src/components/ui/navigation-menu.tsx",
+    "build-template/src/frontend/src/components/ui/pagination.tsx",
+    "build-template/src/frontend/src/components/ui/popover.tsx",
+    "build-template/src/frontend/src/components/ui/progress.tsx",
+    "build-template/src/frontend/src/components/ui/radio-group.tsx",
+    "build-template/src/frontend/src/components/ui/resizable.tsx",
+    "build-template/src/frontend/src/components/ui/scroll-area.tsx",
+    "build-template/src/frontend/src/components/ui/select.tsx",
+    "build-template/src/frontend/src/components/ui/separator.tsx",
+    "build-template/src/frontend/src/components/ui/sheet.tsx",
+    "build-template/src/frontend/src/components/ui/sidebar.tsx",
+    "build-template/src/frontend/src/components/ui/skeleton.tsx",
+    "build-template/src/frontend/src/components/ui/slider.tsx",
+    "build-template/src/frontend/src/components/ui/sonner.tsx",
+    "build-template/src/frontend/src/components/ui/switch.tsx",
+    "build-template/src/frontend/src/components/ui/table.tsx",
+    "build-template/src/frontend/src/components/ui/tabs.tsx",
+    "build-template/src/frontend/src/components/ui/textarea.tsx",
+    "build-template/src/frontend/src/components/ui/toggle-group.tsx",
+    "build-template/src/frontend/src/components/ui/toggle.tsx",
+    "build-template/src/frontend/src/components/ui/tooltip.tsx",
+    "build-template/src/frontend/src/hooks/use-mobile.tsx",
+    "build-template/src/frontend/src/lib/utils.ts",
+    "build-template/src/frontend/tsconfig.json",
+    "build-template/src/frontend/vite.config.js",
+    "build-template/tsconfig.json",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/public/assets/generated/info-banner-bg.dim_1200x260.png",
+    "frontend/public/assets/generated/thai-lottery-hero.dim_1200x700.png",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/home/InfoBanner.tsx",
+    "frontend/src/components/home/LiveResultCard.tsx",
+    "frontend/src/components/home/VipWinnersTicker.tsx",
+    "frontend/src/components/layout/AppLayout.tsx",
+    "frontend/src/components/layout/BottomNav.tsx",
+    "frontend/src/components/results/ResultRow.tsx",
+    "frontend/src/config.ts",
+    "frontend/src/constants/homeContent.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/DepositPage.tsx",
+    "frontend/src/pages/GamePlayPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/ResultsPage.tsx",
+    "frontend/src/pages/TicketBookingPage.tsx",
+    "frontend/src/pages/WithdrawPage.tsx",
+    "frontend/src/ui-summary.json",
+    "frontend/src/utils/StorageClient.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

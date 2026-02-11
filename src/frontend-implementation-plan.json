@@ -1,0 +1,287 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Premium mobile-first THAI LOTTERY UI with navigation, betting, results, and booking (frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement Home page with the exact 8-section layout, visuals, animations, and button wiring.",
+      "acceptanceCriteria": [
+        "Home page renders all 8 sections in the exact order described with the exact titles/text values (e.g., winning numbers 308 and 629).",
+        "Header includes left Menu/Back icon and right Refresh + Mobile icons, and the center text reads exactly \"THAI LOTTERY\".",
+        "Hero overlay text \"THAI LOTTERY – OFFICIAL LIVE RESULT\" remains hidden until the hero image is loaded, then fades in smoothly.",
+        "Animated info banner shows the 3 lines in order with line-by-line appearance animation.",
+        "LIVE indicator visibly blinks red on both result cards.",
+        "Game rate table has a gold header, dark rows, and no animation; includes exactly the 5 specified rows and columns.",
+        "VIP WINNERS list contains 20–25 masked entries, auto-scrolls vertically, and visibly highlights the active entry.",
+        "All Quick Play buttons and the OLD RESULT button are present and clickable."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/thai-lottery-hero.dim_1200x700.png",
+          "operation": "create",
+          "description": "Add the generated hero banner image asset at this exact path and filename for the Home hero section."
+        },
+        {
+          "path": "frontend/public/assets/generated/info-banner-bg.dim_1200x260.png",
+          "operation": "create",
+          "description": "Add the generated info banner background image asset at this exact path and filename for the animated info section."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create the Home page implementing all 8 required sections in the exact order (header+hero with post-load fade-in overlay; animated info banner with 3 lines in order; 2 LIVE result cards with blinking red indicator and exact numbers 3 0 8 and 6 2 9; game rate table; VIP WINNERS auto-scroll list with 20–25 masked entries and highlighted active row; 5 Quick Play buttons with required behaviors; OLD RESULT / RESULT HISTORY button). Use shadcn-ui components (e.g., Button/Card) to keep a premium look; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/home/VipWinnersTicker.tsx",
+          "operation": "create",
+          "description": "Implement the VIP WINNERS section as a dedicated component with a static 20–25 entry dataset (masked name/phone, 40,000+ SAR amounts), auto-vertical scrolling, and a visibly highlighted active entry. Use smooth/slow transitions only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/home/InfoBanner.tsx",
+          "operation": "create",
+          "description": "Implement the animated info banner component with the required wide background image and line-by-line text appearance in the exact order: \"Official Thai Lottery Platform\", \"Fast & Secure Result System\", \"Trusted VIP Gaming Experience\". Use smooth fade/slide only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/home/LiveResultCard.tsx",
+          "operation": "create",
+          "description": "Implement a reusable result card used by Home sections 3 and 4 with a red blinking LIVE indicator, winning number display, and gold PLAY NOW button. Use shadcn-ui primitives where appropriate; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/constants/homeContent.ts",
+          "operation": "create",
+          "description": "Add constants for Home page exact strings/numbers, quick play button labels, and VIP winners static list so text values remain exact and easy to audit."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add a fixed mobile-first layout, global premium dark+gold theme, and a fixed bottom navigation with exactly Home/Deposit/Withdraw across all pages.",
+      "acceptanceCriteria": [
+        "Bottom navigation is fixed (sticky) and remains visible while scrolling on all pages.",
+        "Bottom navigation has exactly 3 items: Home, Deposit, Withdraw, and tapping each opens the correct page.",
+        "The global palette remains dark blue/black with gold/yellow primary buttons and a premium gambling-app-like appearance.",
+        "Animations used are limited to smooth fade/slide/slow transitions (no flashy effects).",
+        "All interactive elements meet touch-friendly sizing on mobile (e.g., buttons are comfortably tappable)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create global styles and CSS variables to enforce the required dark blue/black background, gold/yellow primary buttons, and premium typography/spacing. Keep animations to fade/slide/slow transitions only. (Do not modify immutable UI library files.)"
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme tokens (colors/spacing/radius as needed) to support the dark+gold palette consistently across the app without changing the requested theme."
+        },
+        {
+          "path": "frontend/src/components/layout/AppLayout.tsx",
+          "operation": "create",
+          "description": "Create a mobile-first app shell layout with fixed bottom navigation and a content area that accounts for the bottom bar height. Use shadcn-ui primitives where useful; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/BottomNav.tsx",
+          "operation": "create",
+          "description": "Create the fixed bottom navigation component with exactly 3 items: Home, Deposit, Withdraw. Ensure touch-friendly sizing and active state styling. Use shadcn-ui components where appropriate; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create/replace the root App component to apply the dark theme, wrap all routes with AppLayout, and ensure bottom navigation is present across all pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create the Game Play page UI and wire navigation from Home PLAY NOW and Quick Play buttons; submit calls backend submitBet and shows \"Bet Successful\".",
+      "acceptanceCriteria": [
+        "Navigating from each specified Home button opens the Game Play page and carries the correct game context (Bangkok Weekly vs Thailand Lottery shown in the Game Play top bar).",
+        "Game Play page includes: top bar with game name + user balance, \"SELECT PLAY TYPE\" dropdown, multiple bet rows (bet number + amount), summary (total/discount/final), and gold SUBMIT button.",
+        "Bet number inputs accept only numeric input (validation or input mode) and amounts use SAR as the currency label.",
+        "Submitting the bet shows a visible success notification with the exact text \"Bet Successful\".",
+        "Backend exposes a bet submission method that returns success, and the frontend uses it for submit (no broken buttons)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/GamePlayPage.tsx",
+          "operation": "create",
+          "description": "Implement the Game Play page per spec: top bar with selected game name and balance display; \"SELECT PLAY TYPE\" dropdown; multiple bet rows with numeric bet number and SAR amount inputs; bottom summary (total/discount/final); and a gold SUBMIT button. On submit, call the existing backend capability submitBet via a frontend client and show a premium success notification with exact text \"Bet Successful\". Use shadcn-ui form components (Input/Select/Button/Card) for consistent premium UI; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/gameplay/BetRowsEditor.tsx",
+          "operation": "create",
+          "description": "Create a component managing multiple bet rows (number + amount), enforcing numeric input mode for bet number and calculating totals/summary values. Use smooth transitions only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/services/backendClient.ts",
+          "operation": "create",
+          "description": "Create a thin frontend-only backend client wrapper used by Game Play (submitBet) and other pages, aligning with types in frontend/src/backend.d.ts and using the existing core-infrastructure connection setup."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Wire Home section 3/4 PLAY NOW buttons and Quick Play buttons \"BANGKOK WEEKLY PLAY\" and \"THAI LOTTERY PLAY\" to navigate to Game Play with the correct game context carried via route params or navigation state."
+        },
+        {
+          "path": "frontend/src/components/feedback/ToastProvider.tsx",
+          "operation": "create",
+          "description": "Add a simple premium notification/toast provider used to display \"Bet Successful\" and other required success feedback. Prefer shadcn-ui toast/sonner pattern if available; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register the Game Play route and ensure it renders within the global AppLayout (with fixed bottom navigation present)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Create the Results page with a scrollable date-wise list; support pre-filtered Thai/Bangkok history and OLD RESULT navigation using backend-provided datasets.",
+      "acceptanceCriteria": [
+        "Results page is scrollable and displays rows with game name, date, time, and winning number.",
+        "Clicking \"THAI RESULTS HISTORY\" opens Results page showing exactly the 5 specified Thai entries.",
+        "Clicking \"BANGKOK RESULTS HISTORY\" opens Results page showing exactly the 6 specified Bangkok entries.",
+        "Clicking \"OLD RESULT / RESULT HISTORY\" opens the Results page and shows date/time-wise entries (using the same row format).",
+        "Data shown matches the exact strings/numbers provided in the spec (no rewording or missing entries).",
+        "Backend provides methods (or a structured constant dataset) to serve the results lists to the frontend reliably."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ResultsPage.tsx",
+          "operation": "create",
+          "description": "Implement the Results page with a premium dark+gold style and a scrollable list where each row shows game name, date, time, and winning number. Support opening the page in modes (Thai history, Bangkok history, old results) based on navigation source (route param/state). Fetch the relevant dataset using existing backend capabilities (getThaiHistory/getBangkokHistory/getAllResults) via the frontend backend client. Use shadcn-ui list/card primitives where helpful; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Wire Quick Play buttons \"THAI RESULTS HISTORY\" and \"BANGKOK RESULTS HISTORY\" plus the OLD RESULT / RESULT HISTORY button to open Results page with the correct pre-filter mode."
+        },
+        {
+          "path": "frontend/src/components/results/ResultRow.tsx",
+          "operation": "create",
+          "description": "Create a reusable row component for Results list rendering (game name, date, time, winning number) to ensure consistent formatting. Use shadcn-ui components where appropriate; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/services/backendClient.ts",
+          "operation": "modify",
+          "description": "Add helper methods in the frontend backend client wrapper for retrieving results datasets used by Results page, matching frontend/src/backend.d.ts."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register the Results route and ensure it renders within the global AppLayout (no extra pages beyond the allowed list)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create Ticket Booking page with the exact form inputs; open from Home \"TICKET BOOKING\" and submit shows confirmation + \"Processing\" message using backend submission.",
+      "acceptanceCriteria": [
+        "Clicking the Home button \"TICKET BOOKING\" opens the Ticket Booking page.",
+        "Ticket Booking form includes exactly the required inputs (User name, Contact number, Game type, VIP/Rumble/Local ticket, Booking date).",
+        "Submitting the booking displays a visible confirmation and a visible processing message (wording must include \"Processing\").",
+        "Backend exposes a booking submission method that returns success, and the frontend uses it for submit (no broken buttons)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/TicketBookingPage.tsx",
+          "operation": "create",
+          "description": "Implement Ticket Booking page with a form containing exactly: User name, Contact number, Game type, VIP / Rumble / Local ticket (selection), Booking date. On submit, call the existing backend capability submitBooking via the frontend backend client and show confirmation plus a visible message containing the word \"Processing\". Use shadcn-ui form components (Input/Select/Button/Card) for premium UI; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Wire the Home Quick Play button \"TICKET BOOKING\" to navigate to the Ticket Booking page."
+        },
+        {
+          "path": "frontend/src/services/backendClient.ts",
+          "operation": "modify",
+          "description": "Add a booking submission helper in the frontend backend client wrapper for Ticket Booking page, matching frontend/src/backend.d.ts."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register the Ticket Booking route and ensure it renders within the global AppLayout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Create Deposit and Withdraw pages accessible only from the fixed bottom navigation, each with a functional submit and success feedback.",
+      "acceptanceCriteria": [
+        "Tapping \"Deposit\" opens a Deposit page; tapping \"Withdraw\" opens a Withdraw page; both are styled consistently with the global theme.",
+        "Each of Deposit and Withdraw includes a form with a submit button that, when pressed, shows a clear success feedback message.",
+        "No additional navigation items/pages are introduced beyond those specified (Home, Game Play, Results, Ticket Booking, Deposit, Withdraw)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/DepositPage.tsx",
+          "operation": "create",
+          "description": "Create a mobile-first premium Deposit page reachable only from the bottom navigation. Include a minimal form (e.g., amount input) with a submit action that shows a clear success feedback message (no extra flows). Use shadcn-ui components where appropriate; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/WithdrawPage.tsx",
+          "operation": "create",
+          "description": "Create a mobile-first premium Withdraw page reachable only from the bottom navigation. Include a minimal form (e.g., amount input) with a submit action that shows a clear success feedback message (no extra flows). Use shadcn-ui components where appropriate; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/BottomNav.tsx",
+          "operation": "modify",
+          "description": "Ensure bottom navigation links route only to Home, Deposit, Withdraw (exactly these three items) and that it remains fixed/visible while scrolling."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register Deposit and Withdraw routes and ensure they render within the global AppLayout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Wire all specified buttons to real routes/behaviors and add route-level 404 handling that redirects to Home without adding new pages.",
+      "acceptanceCriteria": [
+        "All specified buttons (PLAY NOW buttons, all Quick Play buttons, OLD RESULT button, bottom nav items) open the correct destination and do not throw runtime errors.",
+        "All required submit actions (bet submit, booking submit, deposit submit, withdraw submit) show success feedback.",
+        "Unknown routes do not crash the app and return the user to Home (implemented without adding an extra page to the UI)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Centralize and verify route registration for all allowed pages (Home, Game Play, Result Page, Ticket Booking, Deposit, Withdraw) and add a catch-all route that redirects to Home (no new UI page)."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Audit and ensure every Home interaction specified is wired (PLAY NOW buttons, 5 Quick Play buttons, OLD RESULT button) and passes required context to destination routes without dead links."
+        },
+        {
+          "path": "frontend/src/pages/GamePlayPage.tsx",
+          "operation": "modify",
+          "description": "Ensure Game Play submit triggers backend client call and always produces visible success feedback \"Bet Successful\" on success, with safe error handling to avoid runtime crashes."
+        },
+        {
+          "path": "frontend/src/pages/ResultsPage.tsx",
+          "operation": "modify",
+          "description": "Ensure Results page correctly interprets navigation mode (Thai history/Bangkok history/old results) and renders without crashes even if data load fails (fallback safely while preserving route stability)."
+        },
+        {
+          "path": "frontend/src/pages/TicketBookingPage.tsx",
+          "operation": "modify",
+          "description": "Ensure Ticket Booking submit triggers backend client call and produces confirmation plus a visible message containing \"Processing\" on success, with safe error handling to avoid runtime crashes."
+        },
+        {
+          "path": "frontend/src/pages/DepositPage.tsx",
+          "operation": "modify",
+          "description": "Ensure Deposit page submit shows success feedback and cannot become a dead-end (e.g., disabled button states handled)."
+        },
+        {
+          "path": "frontend/src/pages/WithdrawPage.tsx",
+          "operation": "modify",
+          "description": "Ensure Withdraw page submit shows success feedback and cannot become a dead-end (e.g., disabled button states handled)."
+        }
+      ]
+    }
+  ]
+}

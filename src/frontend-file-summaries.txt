@@ -1,0 +1,18 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, theme provider, and all route definitions (Home, Game Play, Results, Ticket Booking, Deposit, Withdraw) with 404 redirect to home.",
+  "frontend/src/components/layout/AppLayout.tsx": "Root layout component that wraps all pages with the fixed bottom navigation and provides consistent spacing for mobile-first design.",
+  "frontend/src/components/layout/BottomNav.tsx": "Fixed bottom navigation bar with exactly three items (Home, Deposit, Withdraw) using gold/dark theme and active state highlighting.",
+  "frontend/src/pages/HomePage.tsx": "Complete home page implementing all 8 required sections in exact order: header with logo, hero with fade-in text, animated info banner, two live result cards (Bangkok 308, Thailand 629), game rates table, VIP winners ticker, 5 quick play buttons, and old results button.",
+  "frontend/src/components/home/LiveResultCard.tsx": "Reusable result card component with red blinking LIVE indicator, winning number display in circular badges, and gold Play Now button.",
+  "frontend/src/components/home/InfoBanner.tsx": "Animated info banner displaying three lines of text with sequential fade-in animation over background image.",
+  "frontend/src/components/home/VipWinnersTicker.tsx": "Auto-scrolling VIP winners list with 25 masked entries showing Saudi flag, masked name/phone, and winning amounts with hover pause functionality.",
+  "frontend/src/pages/GamePlayPage.tsx": "Game play page with game name header, balance display, play type dropdown, multiple bet rows (number + amount), summary calculation, and submit functionality calling backend submitBet using correct enum values with success toast.",
+  "frontend/src/pages/ResultsPage.tsx": "Results history page supporting three modes (Thai, Bangkok, All) fetching data from backend and displaying scrollable date-wise result list.",
+  "frontend/src/components/results/ResultRow.tsx": "Individual result row component displaying game name, date, time, and winning number with premium card styling.",
+  "frontend/src/pages/TicketBookingPage.tsx": "Ticket booking form with user name, contact number, ticket type selection (VIP/Rumble/Local), booking date, and submit calling backend submitBooking using correct enum values with confirmation toast.",
+  "frontend/src/pages/DepositPage.tsx": "Deposit page with amount input, preset amount buttons, and submit showing success feedback with simulated processing.",
+  "frontend/src/pages/WithdrawPage.tsx": "Withdraw page with balance display, amount input with validation, preset buttons, and submit showing success feedback.",
+  "frontend/src/constants/homeContent.ts": "Static content constants for home page including exact game rates table data and generated VIP winners list with Saudi names and amounts.",
+  "frontend/src/index.css": "Global styles with dark blue/black background theme, gold accent colors in OKLCH format, custom gold utility classes, and scroll-winners animation for VIP ticker.",
+  "frontend/tailwind.config.js": "Tailwind configuration with extended gold color token, dark theme enforcement, and custom animation support for premium gambling aesthetic."
+}

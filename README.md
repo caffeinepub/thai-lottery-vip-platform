@@ -1,2 +1,3 @@
-# thai-lottery-vip-platform
-Exported from Caffeine project: THAI LOTTERY - VIP Platform
+## THAI LOTTERY - VIP Platform
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

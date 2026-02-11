@@ -1,0 +1,189 @@
+{
+  "kind": "build_request",
+  "title": "Implement premium mobile-first THAI LOTTERY app UI with working navigation, betting flow, results, and booking",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create the Home page with the exact section order and content specified: (1) Header with centered logo text \"THAI LOTTERY\", left Menu/Back icon, right Refresh icon + Mobile icon; hero area below header with a large gold/lottery/VIP hero image and overlay text \"THAI LOTTERY – OFFICIAL LIVE RESULT\" that fades in after the image load event. (2) Animated info banner with a wide banner image and animated text appearing line-by-line in this exact order: \"Official Thai Lottery Platform\", \"Fast & Secure Result System\", \"Trusted VIP Gaming Experience\". (3) Quick Result card for \"BANGKOK WEEKLY RESULT\" with red blinking LIVE indicator, winning number \"3 0 8\", gold \"PLAY NOW\" button. (4) Main Thai Lottery Result card for \"THAILAND LOTTERY\" with red blinking LIVE indicator, winning number \"6 2 9\", gold \"PLAY NOW\" button. (5) Game rate table with gold header, dark rows, no animation, and the exact rows provided. (6) Live winning history section titled \"VIP WINNERS\" with 20–25 entries (masked name, masked phone number, winning amount 40,000+ SAR), auto vertical scroll, and a highlighted active entry. (7) Quick play buttons section with the exact 5 buttons and behaviors specified. (8) Old result button: VIP Pro style, text \"OLD RESULT / RESULT HISTORY\", opens the Result page date-wise.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "PAGE 1: HOME PAGE",
+          "Do NOT change order",
+          "Do NOT add extra pages",
+          "Do NOT change colors or theme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Home page renders all 8 sections in the exact order described with the exact titles/text values (e.g., winning numbers 308 and 629).",
+        "Header includes left Menu/Back icon and right Refresh + Mobile icons, and the center text reads exactly \"THAI LOTTERY\".",
+        "Hero overlay text \"THAI LOTTERY – OFFICIAL LIVE RESULT\" remains hidden until the hero image is loaded, then fades in smoothly.",
+        "Animated info banner shows the 3 lines in order with line-by-line appearance animation.",
+        "LIVE indicator visibly blinks red on both result cards.",
+        "Game rate table has a gold header, dark rows, and no animation; includes exactly the 5 specified rows and columns.",
+        "VIP WINNERS list contains 20–25 masked entries, auto-scrolls vertically, and visibly highlights the active entry.",
+        "All Quick Play buttons and the OLD RESULT button are present and clickable."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement a fixed, mobile-first, app-like layout with a dark blue/black background and gold/yellow primary buttons, touch-friendly sizing, smooth animations (fade/slide/slow transitions only), and a fixed bottom navigation that stays visible and accessible across all pages with exactly these items: Home, Deposit, Withdraw.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "GLOBAL DESIGN RULES",
+          "Dark blue / black background",
+          "Gold & yellow primary buttons",
+          "Bottom navigation must stay fixed",
+          "Fixed bottom navigation: Home Deposit Withdraw"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Bottom navigation is fixed (sticky) and remains visible while scrolling on all pages.",
+        "Bottom navigation has exactly 3 items: Home, Deposit, Withdraw, and tapping each opens the correct page.",
+        "The global palette remains dark blue/black with gold/yellow primary buttons and a premium gambling-app-like appearance.",
+        "Animations used are limited to smooth fade/slide/slow transitions (no flashy effects).",
+        "All interactive elements meet touch-friendly sizing on mobile (e.g., buttons are comfortably tappable)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create the Game Play page exactly per specification: top bar shows the selected game name and a user balance display; a dropdown labeled \"SELECT PLAY TYPE\"; multiple bet rows with fields for bet number and amount; a bottom summary showing bet total, discount, and final amount; and a gold \"SUBMIT\" button. Support navigation into this page from: (a) Home Section 3 \"PLAY NOW\" for Bangkok Weekly, (b) Home Section 4 \"PLAY NOW\" for Thailand Lottery, (c) Quick Play button \"BANGKOK WEEKLY PLAY\", and (d) Quick Play button \"THAI LOTTERY PLAY\". On submit, show a premium notification \"Bet Successful\".",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "PAGE 2: GAME PLAY PAGE",
+          "Gold SUBMIT button",
+          "On submit: Bet Successful confirmation",
+          "Open Game Play Page",
+          "Show form: Game number input (numeric) ... Game type buttons: NO / DIRECT / RUMBLE ... SAR amount input"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigating from each specified Home button opens the Game Play page and carries the correct game context (Bangkok Weekly vs Thailand Lottery shown in the Game Play top bar).",
+        "Game Play page includes: top bar with game name + user balance, \"SELECT PLAY TYPE\" dropdown, multiple bet rows (bet number + amount), summary (total/discount/final), and gold SUBMIT button.",
+        "Bet number inputs accept only numeric input (validation or input mode) and amounts use SAR as the currency label.",
+        "Submitting the bet shows a visible success notification with the exact text \"Bet Successful\".",
+        "Backend exposes a bet submission method that returns success, and the frontend uses it for submit (no broken buttons)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create the Results page (Result Page) with a scrollable, date-wise result list. Each row must show: game name, date, time, and winning number. The page must support opening with pre-filtered datasets based on which Home button was used: (a) \"THAI RESULTS HISTORY\" shows exactly the 5 Thai history entries provided; (b) \"BANGKOK RESULTS HISTORY\" shows exactly the 6 Bangkok history entries provided; and (c) the \"OLD RESULT / RESULT HISTORY\" button opens the same Result page showing date/time-wise entries.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "PAGE 3: RESULT PAGE",
+          "THAI RESULTS HISTORY",
+          "BANGKOK RESULTS HISTORY",
+          "OLD RESULT / RESULT HISTORY"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Results page is scrollable and displays rows with game name, date, time, and winning number.",
+        "Clicking \"THAI RESULTS HISTORY\" opens Results page showing exactly the 5 specified Thai entries.",
+        "Clicking \"BANGKOK RESULTS HISTORY\" opens Results page showing exactly the 6 specified Bangkok entries.",
+        "Clicking \"OLD RESULT / RESULT HISTORY\" opens the Results page and shows date/time-wise entries (using the same row format).",
+        "Data shown matches the exact strings/numbers provided in the spec (no rewording or missing entries).",
+        "Backend provides methods (or a structured constant dataset) to serve the results lists to the frontend reliably."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create the Ticket Booking page with a form containing exactly these inputs: User name, Contact number, Game type, VIP / Rumble / Local ticket (selection), Booking date. Submitting the form must show confirmation plus a \"Processing\" message (per spec: \"Confirmation + Processing message\"). The Ticket Booking page must open from the Home quick play button \"TICKET BOOKING\".",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "TICKET BOOKING",
+          "Opens Ticket Booking Page",
+          "Submit → Confirmation + Processing message"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking the Home button \"TICKET BOOKING\" opens the Ticket Booking page.",
+        "Ticket Booking form includes exactly the required inputs (User name, Contact number, Game type, VIP/Rumble/Local ticket, Booking date).",
+        "Submitting the booking displays a visible confirmation and a visible processing message (wording must include \"Processing\").",
+        "Backend exposes a booking submission method that returns success, and the frontend uses it for submit (no broken buttons)."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Create Deposit and Withdraw pages accessible only via the fixed bottom navigation. Each page must be mobile-first, premium, and include at least one functional form submission that shows success feedback (so the pages are not dead ends). Do not add additional pages or extra feature flows beyond what is needed for a working submit + success feedback on each page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Fixed bottom navigation: Home Deposit Withdraw",
+          "Forms must submit and show success feedback",
+          "Do not add extra pages",
+          "Do not add extra features"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Tapping \"Deposit\" opens a Deposit page; tapping \"Withdraw\" opens a Withdraw page; both are styled consistently with the global theme.",
+        "Each of Deposit and Withdraw includes a form with a submit button that, when pressed, shows a clear success feedback message.",
+        "No additional navigation items/pages are introduced beyond those specified (Home, Game Play, Results, Ticket Booking, Deposit, Withdraw)."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Ensure every button and navigation action described in the spec is wired to an actual route/page and produces the required behavior (page opens, form submits, success feedback). Prevent dead links by adding route-level 404/guard handling that redirects to Home (without adding new pages).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "All buttons must work.",
+          "All pages must open correctly.",
+          "Forms must submit and show success feedback."
+        ]
+      },
+      "acceptanceCriteria": [
+        "All specified buttons (PLAY NOW buttons, all Quick Play buttons, OLD RESULT button, bottom nav items) open the correct destination and do not throw runtime errors.",
+        "All required submit actions (bet submit, booking submit, deposit submit, withdraw submit) show success feedback.",
+        "Unknown routes do not crash the app and return the user to Home (implemented without adding an extra page to the UI)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not change the order of sections on the Home page.",
+    "Do not skip any section described in the spec.",
+    "Do not add extra features beyond what is explicitly described.",
+    "Do not add extra pages beyond: Home, Game Play, Result Page, Ticket Booking, Deposit, Withdraw.",
+    "Do not change the specified colors/theme: dark blue/black background, gold/yellow primary buttons, red blinking LIVE indicator.",
+    "Use English for any user-facing text included in the implementation per build request instructions.",
+    "Frontend must not modify files under frontend/src/components/ui or other immutable paths listed in SYSTEM_CONTEXT."
+  ],
+  "nonGoals": [
+    "Implementing real-money payments, KYC, or external payment provider integrations.",
+    "Implementing third-party authentication beyond Internet Identity.",
+    "Adding real-time/WebSocket live results; results may be served as static datasets unless otherwise specified.",
+    "Adding a User Profile page (not included in the strict page list provided in the final spec)."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Premium gold/lottery/VIP hero banner image with dark background (thai-lottery-hero.dim_1200x700.png)",
+      "Wide dark premium banner background for the animated info section (info-banner-bg.dim_1200x260.png)"
+    ],
+    "edits": []
+  }
+}
